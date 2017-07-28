@@ -62,10 +62,6 @@ public class DataBaseManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
-
         disconnect();
     }
 
