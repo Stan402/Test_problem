@@ -58,7 +58,7 @@ public class DataBaseManager {
             c = toUpdate.size();
         }
         connection.setAutoCommit(true);
-            System.out.println("deleted: " + a + "added: " + b + "updated: " + c);
+            System.out.println("deleted: " + a + " added: " + b + " updated: " + c);
         } catch (SQLException e) {
             e.printStackTrace();
         }

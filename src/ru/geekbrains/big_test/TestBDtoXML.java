@@ -38,6 +38,7 @@ public class TestBDtoXML {
         loadProperties();
 
         dataBaseManager = new DataBaseManager(dbPath);
+        //dataBaseManager.initDB();
         data = dataBaseManager.loadDB();
 
         if (args.length < 2) {
@@ -70,24 +71,7 @@ public class TestBDtoXML {
         default:
             System.out.println("Передана некорректная команда");
         }
-//        for (Map.Entry<NaturalKey, String> entry: data.entrySet()) {
-//            System.out.println(entry.getKey()+" " + entry.getValue());
-//        }
 
-//        File sfile = new File(syncFile);
-//        try {
-//            Map<NaturalKey, String> dataFromFile = parceXML(sfile);
-//            syncData(dataFromFile);
-//        } catch (ParserConfigurationException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (SAXException e) {
-//            e.printStackTrace();
-//        }
-
-
-        //testBDtoXML.dataBaseManager.initDB();
     }
 
     private static void syncData(Map<NaturalKey, String> dataFromFile){
