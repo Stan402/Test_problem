@@ -1,18 +1,17 @@
 package ru.geekbrains.big_test;
 
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import ru.geekbrains.big_test.DataBaseManager;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -22,6 +21,7 @@ import java.util.*;
 
 public class TestBDtoXML {
 
+    private static final Logger log = Logger.getLogger(TestBDtoXML.class);
     private static DataBaseManager dataBaseManager;
     private static Map<NaturalKey, String> data;
 
@@ -62,7 +62,7 @@ public class TestBDtoXML {
             case SYNC_COMMAND:
         File sfile = new File(args[1]);
         try {
-            Map<NaturalKey, String> dataFromFile = parceXML(sfile);
+            Map<NaturalKey, String> dataFromFile = parseXML(sfile);
             syncData(dataFromFile);
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
@@ -91,7 +91,8 @@ public class TestBDtoXML {
 
     }
 
-    private static Map<NaturalKey, String> parceXML(File syncFile) throws ParserConfigurationException, IOException, SAXException {
+    private static Map<NaturalKey, String> parseXML(File syncFile) throws ParserConfigurationException, IOException, SAXException {
+        log.info("parseXML started");
         Map<NaturalKey, String> result = new HashMap<>();
         DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document document = documentBuilder.parse(syncFile);
@@ -172,5 +173,14 @@ public class TestBDtoXML {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        File logFile = new File(logPath);
+        try {
+            logFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

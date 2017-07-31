@@ -14,7 +14,7 @@ public class SetProp {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        File file1 = new File("myLog.txt");
+        File file1 = new File("myLog.log");
         try {
             file1.createNewFile();
         } catch (IOException e) {
@@ -25,13 +25,22 @@ public class SetProp {
             output = new FileOutputStream("testConfig.properties");
 
             prop.setProperty("DBpath", "BigTestSQL.db");
-            prop.setProperty("logFile","myLog.txt" );
+            prop.setProperty("logFile","myLog.log" );
 
             prop.store(output, null);
 
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if (output != null) {
+                    output.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
 }
