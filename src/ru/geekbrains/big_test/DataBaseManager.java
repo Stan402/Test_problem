@@ -1,5 +1,8 @@
 package ru.geekbrains.big_test;
 
+import org.apache.log4j.*;
+
+import java.io.IOException;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,6 +10,7 @@ import java.util.Set;
 
 public class DataBaseManager {
 
+    private static final Logger log = Logger.getLogger(TestBDtoXML.class);
     private String path;
     private Connection connection;
     private Statement statement;
@@ -19,6 +23,7 @@ public class DataBaseManager {
     }
 
     void updateDB(Set<NaturalKey> toDelete, Map<NaturalKey, String> toAdd, Map<NaturalKey, String> toUpdate){
+        log.info("updateDB started");
         connect();
         int a = 0, b = 0, c = 0;
         try {
@@ -94,6 +99,7 @@ public class DataBaseManager {
     }
 
     Map<NaturalKey, String> loadDB(){
+        log.info("loadDB started");
         Map<NaturalKey, String> result = new HashMap<>();
         connect();
         try {
@@ -124,6 +130,17 @@ public class DataBaseManager {
         try {
             connection.close();
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void setupLog(String logPath){
+        Layout layout = new PatternLayout("%d{ABSOLUTE} %5p %t %C{1}:%M:%L - %m%n");
+        Appender fileAppender = null;
+        try {
+            fileAppender = new FileAppender(layout ,logPath);
+            log.addAppender(fileAppender);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

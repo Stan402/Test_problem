@@ -1,7 +1,8 @@
 package ru.geekbrains.big_test;
 
 
-import org.apache.log4j.Logger;
+import org.apache.log4j.*;
+import org.apache.log4j.spi.Filter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -36,10 +37,14 @@ public class TestBDtoXML {
     public static void main(String[] args) {
 
         loadProperties();
+        setupLog(logPath);
+        DataBaseManager.setupLog(logPath);
+        log.info("setup is done");
 
         dataBaseManager = new DataBaseManager(dbPath);
         //dataBaseManager.initDB();
         data = dataBaseManager.loadDB();
+        log.info("data is loaded");
 
         if (args.length < 2) {
             System.out.println("Вы забыли задать параметры для программы. Попробуйте еще раз!");
@@ -75,6 +80,7 @@ public class TestBDtoXML {
     }
 
     private static void syncData(Map<NaturalKey, String> dataFromFile){
+        log.info("syncData started");
          Map<NaturalKey, String> dataToAdd = new HashMap<>();
          Map<NaturalKey, String> dataToUpdate = new HashMap<>();
          Set<NaturalKey> dataToDelete = new HashSet<>();
@@ -116,6 +122,7 @@ public class TestBDtoXML {
     }
 
     private static void writeDataToXML(File file) throws ParserConfigurationException, IOException, SAXException {
+        log.info("writeDataToXML started");
         DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document document = documentBuilder.newDocument();
         Element root = document.createElement("DBCopy");
@@ -144,6 +151,7 @@ public class TestBDtoXML {
 
     private static void writeDocument(Document document, File file)  {
         try {
+            log.info("writeDocument started");
             Transformer tr = TransformerFactory.newInstance().newTransformer();
             DOMSource source = new DOMSource(document);
             FileOutputStream fos = new FileOutputStream(file);
@@ -180,7 +188,16 @@ public class TestBDtoXML {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-
+    private static void setupLog(String logPath){
+        Layout layout = new PatternLayout("%d{ABSOLUTE} %5p %t %C{1}:%M:%L - %m%n");
+        Appender fileAppender = null;
+        try {
+            fileAppender = new FileAppender(layout ,logPath);
+            log.addAppender(fileAppender);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
