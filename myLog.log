@@ -1,0 +1,12 @@
+21:19:23,903  INFO main TestBDtoXML:main:42 - setup is done
+21:19:23,903  INFO main TestBDtoXML:main:42 - setup is done
+21:19:23,907  INFO main DataBaseManager:loadDB:102 - loadDB started
+21:19:23,907  INFO main DataBaseManager:loadDB:102 - loadDB started
+21:19:24,197  INFO main TestBDtoXML:main:47 - data is loaded
+21:19:24,197  INFO main TestBDtoXML:main:47 - data is loaded
+21:19:24,197  INFO main TestBDtoXML:parseXML:101 - parseXML started
+21:19:24,197  INFO main TestBDtoXML:parseXML:101 - parseXML started
+21:19:24,227  INFO main TestBDtoXML:syncData:83 - syncData started
+21:19:24,227  INFO main TestBDtoXML:syncData:83 - syncData started
+21:19:24,228  INFO main DataBaseManager:updateDB:26 - updateDB started
+21:19:24,228  INFO main DataBaseManager:updateDB:26 - updateDB started
