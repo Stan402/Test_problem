@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class DataBaseManager {
 
-    private static final Logger log = Logger.getLogger(TestBDtoXML.class);
+    private static final Logger log = Logger.getLogger(DataBaseManager.class);
     private String path;
     private Connection connection;
     private Statement statement;
@@ -25,11 +25,11 @@ public class DataBaseManager {
     void updateDB(Set<NaturalKey> toDelete, Map<NaturalKey, String> toAdd, Map<NaturalKey, String> toUpdate){
         log.info("updateDB started");
         connect();
-        int a = 0, b = 0, c = 0;
+        try {
+            Savepoint svpt1 = connection.setSavepoint();
+        int countDel = 0, countAdd = 0, countUpdate = 0;
         try {
             connection.setAutoCommit(false);
-            Savepoint svpt1 = connection.setSavepoint();
-
         if (toDelete != null){
             PreparedStatement psDel = connection.prepareStatement(prepDelete);
             for (NaturalKey key: toDelete) {
@@ -38,7 +38,7 @@ public class DataBaseManager {
                 psDel.addBatch();
             }
             psDel.executeBatch();
-            a = toDelete.size();
+            countDel = toDelete.size();
         }
         if(toAdd != null){
             PreparedStatement psAdd = connection.prepareStatement(prepInsert);
@@ -49,7 +49,7 @@ public class DataBaseManager {
                 psAdd.addBatch();
             }
             psAdd.executeBatch();
-            b = toAdd.size();
+            countAdd = toAdd.size();
         }
         if(toUpdate != null){
             PreparedStatement psUpdate = connection.prepareStatement(prepUpdate);
@@ -60,17 +60,26 @@ public class DataBaseManager {
                 psUpdate.addBatch();
             }
             psUpdate.executeBatch();
-            c = toUpdate.size();
+            countUpdate = toUpdate.size();
         }
         connection.setAutoCommit(true);
-            System.out.println("deleted: " + a + " added: " + b + " updated: " + c);
+            System.out.println("deleted: " + countDel + " added: " + countAdd + " updated: " + countUpdate);
         } catch (SQLException e) {
-            e.printStackTrace();
+            connection.rollback();
+            log.error("Something went wrong while updating to DataBase", e);
+        } finally {
+            disconnect();
         }
-        disconnect();
+        } catch (SQLException e) {
+            log.error("Something went wrong while creating Savepoint. Transaction cancelled.", e);
+            disconnect();
+            System.exit(0);
+        }
+        log.info("updateDB is done");
     }
 
     void initDB() {
+        log.info("initDB is started");
         connect();
         try {
             statement = connection.createStatement();
@@ -93,9 +102,11 @@ public class DataBaseManager {
             psInit.executeBatch();
             connection.setAutoCommit(true);
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Something went wrong while initializing the DataBase", e);
+        }finally {
+            disconnect();
         }
-        disconnect();
+        log.info("initDB is done");
     }
 
     Map<NaturalKey, String> loadDB(){
@@ -110,9 +121,10 @@ public class DataBaseManager {
                 result.put(new NaturalKey(rs.getString("DepCode"), rs.getString("DepJob")), rs.getString("Description"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Something went wrong while loading DataBase", e);
         }
         disconnect();
+        log.info("loadDB is done");
         return result;
     }
 
@@ -122,7 +134,7 @@ public class DataBaseManager {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:" + path);
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            log.error("Something went wrong while connecting to DataBase", e);
         }
     }
 
@@ -130,7 +142,7 @@ public class DataBaseManager {
         try {
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Something went wrong while disconnecting from DataBase", e);
         }
     }
 

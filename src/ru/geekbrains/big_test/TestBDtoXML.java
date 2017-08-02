@@ -29,22 +29,17 @@ public class TestBDtoXML {
     private static final String PROPERTIES_PATH = "testConfig.properties";
     private static final String SAVE_COMMAND = "save";
     private static final String SYNC_COMMAND = "sync";
+    private static final String INIT_COMMAND = "init";
 
     private static String dbPath;
-    private static String logPath;
-
 
     public static void main(String[] args) {
 
         loadProperties();
-        setupLog(logPath);
-        DataBaseManager.setupLog(logPath);
+
         log.info("setup is done");
 
         dataBaseManager = new DataBaseManager(dbPath);
-        //dataBaseManager.initDB();
-        data = dataBaseManager.loadDB();
-        log.info("data is loaded");
 
         if (args.length < 2) {
             System.out.println("Вы забыли задать параметры для программы. Попробуйте еще раз!");
@@ -53,30 +48,40 @@ public class TestBDtoXML {
         switch (args[0]){
             case SAVE_COMMAND:
                 File file = new File(args[1]);
+                data = dataBaseManager.loadDB();
         try {
             file.createNewFile();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("something goes wrong with the incoming file", e);
         }
         try {
             writeDataToXML(file);
+            System.out.println("Data saved to " + args[1]);
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
+            log.error("Something went wrong with writeDataToXML method",e);
         }
         break;
             case SYNC_COMMAND:
         File sfile = new File(args[1]);
+                data = dataBaseManager.loadDB();
         try {
             Map<NaturalKey, String> dataFromFile = parseXML(sfile);
             syncData(dataFromFile);
         } catch (ParserConfigurationException | IOException | SAXException e) {
-            e.printStackTrace();
+            log.error("Something went wrong with synchronization",e);
+        } catch (DoubleNaturalKeyException e) {
+            log.error("XML file contains at least two identical key - synchronixation cancelled",e);
+            System.out.println("XML file contains at least two identical key - synchronixation cancelled");
+            System.exit(0);
         }
-        break;
+                break;
+            case INIT_COMMAND:
+                dataBaseManager.initDB();
+                System.out.println("new Data created");
+                break;
         default:
-            System.out.println("Передана некорректная команда");
+            System.out.println("Incorrect command");
         }
-
     }
 
     private static void syncData(Map<NaturalKey, String> dataFromFile){
@@ -92,12 +97,12 @@ public class TestBDtoXML {
             if (!data.containsKey(entry.getKey())) dataToAdd.put(entry.getKey(), entry.getValue());
             else if (!entry.getValue().equals(data.get(entry.getKey()))) dataToUpdate.put(entry.getKey(), entry.getValue());
         }
-
         dataBaseManager.updateDB(dataToDelete, dataToAdd, dataToUpdate);
-
+        log.info("syncData is done");
     }
 
-    private static Map<NaturalKey, String> parseXML(File syncFile) throws ParserConfigurationException, IOException, SAXException {
+    private static Map<NaturalKey, String> parseXML(File syncFile)
+            throws ParserConfigurationException, IOException, SAXException, DoubleNaturalKeyException {
         log.info("parseXML started");
         Map<NaturalKey, String> result = new HashMap<>();
         DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -118,6 +123,7 @@ public class TestBDtoXML {
             if (result.containsKey(key)) throw new DoubleNaturalKeyException();
             result.put(key, descrptn);
         }
+        log.info("parseXML is done");
         return result;
     }
 
@@ -132,6 +138,7 @@ public class TestBDtoXML {
             addNewEntry(document, entry);
         }
         writeDocument(document, file);
+        log.info("writeDataToXML is done");
     }
 
     private static void addNewEntry(Document document, Map.Entry<NaturalKey, String> entry){
@@ -150,8 +157,8 @@ public class TestBDtoXML {
     }
 
     private static void writeDocument(Document document, File file)  {
+        log.info("writeDocument started");
         try {
-            log.info("writeDocument started");
             Transformer tr = TransformerFactory.newInstance().newTransformer();
             DOMSource source = new DOMSource(document);
             FileOutputStream fos = new FileOutputStream(file);
@@ -159,16 +166,15 @@ public class TestBDtoXML {
             tr.transform(source, result);
             fos.close();
         } catch (TransformerException | IOException e) {
-            e.printStackTrace();
+            log.error("Something went wrong with writing to XML file",e);
         }
-
-
+        log.info("writeDocument is done");
     }
 
     private static void loadProperties(){
         FileInputStream fis;
         Properties properties = new Properties();
-
+        String logPath="";
         try {
             fis = new FileInputStream(PROPERTIES_PATH);
             properties.load(fis);
@@ -177,14 +183,10 @@ public class TestBDtoXML {
             logPath = properties.getProperty("logFile");
 
             fis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        File logFile = new File(logPath);
-        try {
+            File logFile = new File(logPath);
             logFile.createNewFile();
+            setupLog(logPath);
+            DataBaseManager.setupLog(logPath);
         } catch (IOException e) {
             e.printStackTrace();
         }
