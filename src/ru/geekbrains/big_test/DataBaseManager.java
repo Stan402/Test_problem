@@ -8,7 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class DataBaseManager {
+/**
+ * Класс осуществляет взаимодействие с базой данных для целей задач класса
+ * @see TestBDtoXML
+ */
+class DataBaseManager {
 
     private static final Logger log = Logger.getLogger(DataBaseManager.class);
     private String path;
@@ -18,10 +22,23 @@ public class DataBaseManager {
     private static final String prepInsert = "INSERT INTO Organogram (DepCode, DepJob, Description) VALUES(?, ?, ?)";
     private static final String prepUpdate = "UPDATE Organogram SET Description = ? WHERE DepCode = ? AND DepJob = ?";
 
+    /**
+     * конструктор задает путь к базе данных
+     * @param path - путь к базе данных, получен из файла свойств
+     *             @see TestBDtoXML#loadProperties()
+     */
     DataBaseManager(String path){
         this.path = path;
     }
 
+    /**
+     * Осуществляет обновление базы данных в соответствии с переданными параметрами
+     * обновление осуществляется одной транзакцией - если где то происходит сбой, данные возвращаются в исходное
+     * состояние
+     * @param toDelete - блок данных для удаления из базы
+     * @param toAdd - блок данных для добавления в базу
+     * @param toUpdate - блок данных для коррекции записей в базе
+     */
     void updateDB(Set<NaturalKey> toDelete, Map<NaturalKey, String> toAdd, Map<NaturalKey, String> toUpdate){
         log.info("updateDB started");
         connect();
@@ -78,6 +95,10 @@ public class DataBaseManager {
         log.info("updateDB is done");
     }
 
+    /**
+     * Метод создает, если требуется, базу данных - если не требуется, очищает старую
+     * Заполняет базу тестовыми данными
+     */
     void initDB() {
         log.info("initDB is started");
         connect();
@@ -109,6 +130,10 @@ public class DataBaseManager {
         log.info("initDB is done");
     }
 
+    /**
+     * Загружает данные из базы данных в программу
+     * @return - возвращает данные базы в формате удобном для обработки основной программой
+     */
     Map<NaturalKey, String> loadDB(){
         log.info("loadDB started");
         Map<NaturalKey, String> result = new HashMap<>();
@@ -128,7 +153,9 @@ public class DataBaseManager {
         return result;
     }
 
-
+    /**
+     * Открывает доступ к базе данных
+     */
     public void connect() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -138,6 +165,9 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * закрывает доступ к базе данных
+     */
     public void disconnect() {
         try {
             connection.close();
@@ -146,6 +176,11 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * Инициализирует логер в соответствии с файлом из файла свойств
+     * @see TestBDtoXML#loadProperties()
+     * @param logPath - путь к файлу, в который будут писаться логи
+     */
     static void setupLog(String logPath){
         Layout layout = new PatternLayout("%d{ABSOLUTE} %5p %t %C{1}:%M:%L - %m%n");
         Appender fileAppender = null;

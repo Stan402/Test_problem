@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="090c0490-112d-4636-aa9a-49906ec785ff" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/log4j.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/geekbrains/big_test/SetProp.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/geekbrains/big_test/TestLog.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BigTestSQL.db" afterPath="$PROJECT_DIR$/BigTestSQL.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Test_problem/ru/geekbrains/big_test/DataBaseManager.class" afterPath="$PROJECT_DIR$/out/production/Test_problem/ru/geekbrains/big_test/DataBaseManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Test_problem/ru/geekbrains/big_test/DoubleNaturalKeyException.class" afterPath="$PROJECT_DIR$/out/production/Test_problem/ru/geekbrains/big_test/DoubleNaturalKeyException.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test_problem/ru/geekbrains/big_test/SetProp.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Test_problem/ru/geekbrains/big_test/TestBDtoXML.class" afterPath="$PROJECT_DIR$/out/production/Test_problem/ru/geekbrains/big_test/TestBDtoXML.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myLog.log" afterPath="$PROJECT_DIR$/myLog.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/geekbrains/big_test/DataBaseManager.java" afterPath="$PROJECT_DIR$/src/ru/geekbrains/big_test/DataBaseManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/geekbrains/big_test/DoubleNaturalKeyException.java" afterPath="$PROJECT_DIR$/src/ru/geekbrains/big_test/DoubleNaturalKeyException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/geekbrains/big_test/NaturalKey.java" afterPath="$PROJECT_DIR$/src/ru/geekbrains/big_test/NaturalKey.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/geekbrains/big_test/TestBDtoXML.java" afterPath="$PROJECT_DIR$/src/ru/geekbrains/big_test/TestBDtoXML.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,8 +25,8 @@
       <file leaf-file-name="DataBaseManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/DataBaseManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1770">
-              <caret line="126" column="35" lean-forward="false" selection-start-line="126" selection-start-column="35" selection-end-line="126" selection-end-column="35" />
+            <state relative-caret-position="138">
+              <caret line="134" column="91" lean-forward="true" selection-start-line="134" selection-start-column="91" selection-end-line="134" selection-end-column="91" />
               <folding />
             </state>
           </provider>
@@ -40,28 +35,28 @@
       <file leaf-file-name="DoubleNaturalKeyException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/DoubleNaturalKeyException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="57" lean-forward="false" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
+            <state relative-caret-position="45">
+              <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NaturalKey.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NaturalKey.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/NaturalKey.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="103">
+              <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestBDtoXML.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestBDtoXML.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/TestBDtoXML.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="771">
-              <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state relative-caret-position="3615">
+              <caret line="258" column="67" lean-forward="false" selection-start-line="257" selection-start-column="7" selection-end-line="258" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -72,8 +67,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -89,7 +84,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ru/geekbrains/big_test/NaturalKey.java" />
         <option value="$PROJECT_DIR$/src/ru/geekbrains/big_test/SetProp.java" />
         <option value="$PROJECT_DIR$/log4j.properties" />
         <option value="$PROJECT_DIR$/testConfig.properties" />
@@ -98,10 +92,11 @@
         <option value="$PROJECT_DIR$/log4j.xml" />
         <option value="$PROJECT_DIR$/src/log4j.xml" />
         <option value="$PROJECT_DIR$/src/ru/geekbrains/big_test/TestLog.java" />
-        <option value="$PROJECT_DIR$/src/ru/geekbrains/big_test/DoubleNaturalKeyException.java" />
         <option value="$PROJECT_DIR$/myLog.log" />
-        <option value="$PROJECT_DIR$/src/ru/geekbrains/big_test/DataBaseManager.java" />
         <option value="$PROJECT_DIR$/src/ru/geekbrains/big_test/TestBDtoXML.java" />
+        <option value="$PROJECT_DIR$/src/ru/geekbrains/big_test/DataBaseManager.java" />
+        <option value="$PROJECT_DIR$/src/ru/geekbrains/big_test/DoubleNaturalKeyException.java" />
+        <option value="$PROJECT_DIR$/src/ru/geekbrains/big_test/NaturalKey.java" />
       </list>
     </option>
   </component>
@@ -204,6 +199,10 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="test_problem" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -522,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1501615477239</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="logging is done">
+      <created>1501691727406</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1501691727406</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -536,13 +542,14 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281471" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3281471" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17291667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -555,7 +562,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -565,7 +571,8 @@
     <MESSAGE value="small adjustments made" />
     <MESSAGE value="trying to do logging - no success so far" />
     <MESSAGE value="start doing log" />
-    <option name="LAST_COMMIT_MESSAGE" value="start doing log" />
+    <MESSAGE value="logging is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="logging is done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -578,14 +585,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/DataBaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/DoubleNaturalKeyException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -829,26 +828,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/log4j.xml" />
-    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/DataBaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1770">
-          <caret line="126" column="35" lean-forward="false" selection-start-line="126" selection-start-column="35" selection-end-line="126" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myLog.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="70" lean-forward="true" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/DoubleNaturalKeyException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="57" lean-forward="false" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,19 +843,36 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/SetProp.java" />
-    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/NaturalKey.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/TestLog.java" />
+    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/G.java" />
+    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/TestBDtoXML.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="3615">
+          <caret line="258" column="67" lean-forward="false" selection-start-line="257" selection-start-column="7" selection-end-line="258" selection-end-column="67" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/TestLog.java" />
-    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/TestBDtoXML.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/DoubleNaturalKeyException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
-          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        <state relative-caret-position="45">
+          <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/DataBaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="134" column="91" lean-forward="true" selection-start-line="134" selection-start-column="91" selection-end-line="134" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/big_test/NaturalKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
           <folding />
         </state>
       </provider>
