@@ -39,54 +39,54 @@ class DataBaseManager {
      * @param toAdd - блок данных для добавления в базу
      * @param toUpdate - блок данных для коррекции записей в базе
      */
-    void updateDB(Set<NaturalKey> toDelete, Map<NaturalKey, String> toAdd, Map<NaturalKey, String> toUpdate){
+    void updateDB(Set<NaturalKey> toDelete, Map<NaturalKey, String> toAdd, Map<NaturalKey, String> toUpdate) {
         log.info("updateDB started");
         connect();
         try {
             Savepoint svpt1 = connection.setSavepoint();
-        int countDel = 0, countAdd = 0, countUpdate = 0;
-        try {
-            connection.setAutoCommit(false);
-        if (toDelete != null){
-            PreparedStatement psDel = connection.prepareStatement(prepDelete);
-            for (NaturalKey key: toDelete) {
-                psDel.setString(1, key.getDepCode());
-                psDel.setString(2, key.getDepJob());
-                psDel.addBatch();
+            int countDel = 0, countAdd = 0, countUpdate = 0;
+            try {
+                connection.setAutoCommit(false);
+                if (toDelete != null) {
+                    PreparedStatement psDel = connection.prepareStatement(prepDelete);
+                    for (NaturalKey key : toDelete) {
+                        psDel.setString(1, key.getDepCode());
+                        psDel.setString(2, key.getDepJob());
+                        psDel.addBatch();
+                    }
+                    psDel.executeBatch();
+                    countDel = toDelete.size();
+                }
+                if (toAdd != null) {
+                    PreparedStatement psAdd = connection.prepareStatement(prepInsert);
+                    for (Map.Entry<NaturalKey, String> entry : toAdd.entrySet()) {
+                        psAdd.setString(1, entry.getKey().getDepCode());
+                        psAdd.setString(2, entry.getKey().getDepJob());
+                        psAdd.setString(3, entry.getValue());
+                        psAdd.addBatch();
+                    }
+                    psAdd.executeBatch();
+                    countAdd = toAdd.size();
+                }
+                if (toUpdate != null) {
+                    PreparedStatement psUpdate = connection.prepareStatement(prepUpdate);
+                    for (Map.Entry<NaturalKey, String> entry : toUpdate.entrySet()) {
+                        psUpdate.setString(1, entry.getValue());
+                        psUpdate.setString(2, entry.getKey().getDepCode());
+                        psUpdate.setString(3, entry.getKey().getDepJob());
+                        psUpdate.addBatch();
+                    }
+                    psUpdate.executeBatch();
+                    countUpdate = toUpdate.size();
+                }
+                connection.setAutoCommit(true);
+                System.out.println("deleted: " + countDel + " added: " + countAdd + " updated: " + countUpdate);
+            } catch (SQLException e) {
+                connection.rollback();
+                log.error("Something went wrong while updating to DataBase", e);
+            } finally {
+                disconnect();
             }
-            psDel.executeBatch();
-            countDel = toDelete.size();
-        }
-        if(toAdd != null){
-            PreparedStatement psAdd = connection.prepareStatement(prepInsert);
-            for (Map.Entry<NaturalKey, String> entry: toAdd.entrySet()) {
-                psAdd.setString(1, entry.getKey().getDepCode());
-                psAdd.setString(2, entry.getKey().getDepJob());
-                psAdd.setString(3, entry.getValue());
-                psAdd.addBatch();
-            }
-            psAdd.executeBatch();
-            countAdd = toAdd.size();
-        }
-        if(toUpdate != null){
-            PreparedStatement psUpdate = connection.prepareStatement(prepUpdate);
-            for (Map.Entry<NaturalKey, String> entry: toUpdate.entrySet()) {
-                psUpdate.setString(1, entry.getValue());
-                psUpdate.setString(2, entry.getKey().getDepCode());
-                psUpdate.setString(3, entry.getKey().getDepJob());
-                psUpdate.addBatch();
-            }
-            psUpdate.executeBatch();
-            countUpdate = toUpdate.size();
-        }
-        connection.setAutoCommit(true);
-            System.out.println("deleted: " + countDel + " added: " + countAdd + " updated: " + countUpdate);
-        } catch (SQLException e) {
-            connection.rollback();
-            log.error("Something went wrong while updating to DataBase", e);
-        } finally {
-            disconnect();
-        }
         } catch (SQLException e) {
             log.error("Something went wrong while creating Savepoint. Transaction cancelled.", e);
             disconnect();
@@ -115,7 +115,7 @@ class DataBaseManager {
             connection.setAutoCommit(false);
             int countTo = 100;
             for (int i = 1; i < countTo; i++) {
-                psInit.setString(1, "department" + i/10);
+                psInit.setString(1, "department" + i / 10);
                 psInit.setString(2, "worker#" + i);
                 psInit.setString(3, "doing some stupid work" + i);
                 psInit.addBatch();
@@ -124,7 +124,7 @@ class DataBaseManager {
             connection.setAutoCommit(true);
         } catch (SQLException e) {
             log.error("Something went wrong while initializing the DataBase", e);
-        }finally {
+        } finally {
             disconnect();
         }
         log.info("initDB is done");
@@ -132,9 +132,10 @@ class DataBaseManager {
 
     /**
      * Загружает данные из базы данных в программу
+     *
      * @return - возвращает данные базы в формате удобном для обработки основной программой
      */
-    Map<NaturalKey, String> loadDB(){
+    Map<NaturalKey, String> loadDB() {
         log.info("loadDB started");
         Map<NaturalKey, String> result = new HashMap<>();
         connect();
@@ -142,7 +143,7 @@ class DataBaseManager {
             PreparedStatement psLoadDB = connection.prepareStatement("SELECT * FROM Organogram");
             statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM Organogram");
-            while (rs.next()){
+            while (rs.next()) {
                 result.put(new NaturalKey(rs.getString("DepCode"), rs.getString("DepJob")), rs.getString("Description"));
             }
         } catch (SQLException e) {
@@ -178,14 +179,15 @@ class DataBaseManager {
 
     /**
      * Инициализирует логер в соответствии с файлом из файла свойств
-     * @see TestBDtoXML#loadProperties()
+     *
      * @param logPath - путь к файлу, в который будут писаться логи
+     * @see TestBDtoXML#loadProperties()
      */
-    static void setupLog(String logPath){
+    static void setupLog(String logPath) {
         Layout layout = new PatternLayout("%d{ABSOLUTE} %5p %t %C{1}:%M:%L - %m%n");
         Appender fileAppender = null;
         try {
-            fileAppender = new FileAppender(layout ,logPath);
+            fileAppender = new FileAppender(layout, logPath);
             log.addAppender(fileAppender);
         } catch (IOException e) {
             e.printStackTrace();
