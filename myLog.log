@@ -1,0 +1,51 @@
+
+
+17:39:09,807  INFO main TestBDtoXML:main:39 - setup is done
+17:39:09,811  INFO main DataBaseManager:loadDB:110 - loadDB started
+17:39:10,135  INFO main TestBDtoXML:main:44 - data is loaded
+17:39:10,135  INFO main TestBDtoXML:parseXML:103 - parseXML started
+17:39:10,200  INFO main TestBDtoXML:syncData:84 - syncData started
+17:39:10,202  INFO main DataBaseManager:updateDB:26 - updateDB started
+17:55:51,027  INFO main TestBDtoXML:main:40 - setup is done
+17:55:51,032  INFO main DataBaseManager:loadDB:113 - loadDB started
+17:55:51,350  INFO main DataBaseManager:loadDB:127 - loadDB is done
+17:55:51,350  INFO main TestBDtoXML:parseXML:104 - parseXML started
+17:55:51,412  INFO main TestBDtoXML:parseXML:124 - parseXML is done
+17:55:51,412  INFO main TestBDtoXML:syncData:86 - syncData started
+17:55:51,419  INFO main DataBaseManager:updateDB:26 - updateDB started
+17:55:51,426  INFO main DataBaseManager:updateDB:78 - updateDB is done
+17:55:51,426  INFO main TestBDtoXML:syncData:99 - syncData is done
+18:03:17,205  INFO main TestBDtoXML:main:40 - setup is done
+18:03:17,209  INFO main DataBaseManager:initDB:82 - initDB is started
+18:03:17,522  INFO main DataBaseManager:initDB:109 - initDB is done
+18:04:22,568  INFO main TestBDtoXML:main:40 - setup is done
+18:04:22,572  INFO main DataBaseManager:loadDB:113 - loadDB started
+18:04:22,883  INFO main DataBaseManager:loadDB:127 - loadDB is done
+18:04:22,883  INFO main TestBDtoXML:parseXML:105 - parseXML started
+18:04:22,950  INFO main TestBDtoXML:parseXML:125 - parseXML is done
+18:04:22,955  INFO main TestBDtoXML:syncData:87 - syncData started
+18:04:22,958  INFO main DataBaseManager:updateDB:26 - updateDB started
+18:04:22,963  INFO main DataBaseManager:updateDB:78 - updateDB is done
+18:04:22,963  INFO main TestBDtoXML:syncData:100 - syncData is done
+18:05:35,657  INFO main TestBDtoXML:main:40 - setup is done
+18:05:35,662  INFO main DataBaseManager:loadDB:113 - loadDB started
+18:05:35,958  INFO main DataBaseManager:loadDB:127 - loadDB is done
+18:05:35,959  INFO main TestBDtoXML:writeDataToXML:130 - writeDataToXML started
+18:05:35,995  INFO main TestBDtoXML:writeDocument:159 - writeDocument started
+18:05:36,138  INFO main TestBDtoXML:writeDocument:170 - writeDocument is done
+18:05:36,142  INFO main TestBDtoXML:writeDataToXML:140 - writeDataToXML is done
+18:06:17,769  INFO main TestBDtoXML:main:40 - setup is done
+18:06:17,773  INFO main DataBaseManager:initDB:82 - initDB is started
+18:06:18,092  INFO main DataBaseManager:initDB:109 - initDB is done
+18:10:25,532  INFO main TestBDtoXML:main:40 - setup is done
+18:10:25,536  INFO main DataBaseManager:initDB:82 - initDB is started
+18:10:25,852  INFO main DataBaseManager:initDB:109 - initDB is done
+18:11:07,624  INFO main TestBDtoXML:main:40 - setup is done
+18:11:07,628  INFO main DataBaseManager:loadDB:113 - loadDB started
+18:11:07,918  INFO main DataBaseManager:loadDB:127 - loadDB is done
+18:11:07,918  INFO main TestBDtoXML:parseXML:107 - parseXML started
+18:11:07,989  INFO main TestBDtoXML:parseXML:127 - parseXML is done
+18:11:07,989  INFO main TestBDtoXML:syncData:89 - syncData started
+18:11:07,993  INFO main DataBaseManager:updateDB:26 - updateDB started
+18:11:07,996  INFO main DataBaseManager:updateDB:78 - updateDB is done
+18:11:07,996  INFO main TestBDtoXML:syncData:102 - syncData is done

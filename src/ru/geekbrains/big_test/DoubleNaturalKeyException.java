@@ -1,5 +1,8 @@
 package ru.geekbrains.big_test;
 
-public class DoubleNaturalKeyException extends RuntimeException{
+/**
+ * исключение выбрасывается, если в переданном файле оказываются два одинаковых ключа
+ */
+public class DoubleNaturalKeyException extends Exception{
 
 }

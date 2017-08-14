@@ -1,5 +1,10 @@
 package ru.geekbrains.big_test;
 
+/**
+ * Класс описывает понятие Натурального ключа,
+ * который объединяет в себя два поля базы данных depCode и depJob
+ * по условиям задачи комбинация этих полей должна быть уникальной для каждой записи
+ */
 public class NaturalKey {
     private String depCode;
     private String depJob;
